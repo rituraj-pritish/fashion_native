@@ -1,7 +1,6 @@
 import produce from 'immer'
 
 import { firebase, db } from 'app/services/firebase'
-// import setAlert from 'setAlert'
 // import { setAppLoading } from 'redux/app'
 // import { getCartItems } from 'redux/cart'
 // import { getWishlistItems } from 'redux/wishlist'
@@ -16,7 +15,7 @@ const AUTH_SUCCESS = 'AUTH_SUCCESS'
 
 // action creators
 
-export const signup = data => async dispatch => {
+export const signUp = data => async dispatch => {
   dispatch({ type: AUTH_REQUEST })
 
   const { email, password, name, phone } = data
@@ -36,15 +35,13 @@ export const signup = data => async dispatch => {
       db.collection('users').doc(res.user.uid).set(userPayload)
 
       dispatch({ type: AUTH_SUCCESS, payload: userPayload })
-      setAlert('Sign up successful', 'success')
     }
   } catch (err) {
     dispatch({ type: AUTH_FAILURE, payload: err })
-    setAlert(err.message, 'danger')
   }
 }
 
-export const signin = ({ email, password }) => async dispatch => {
+export const signIn = ({ email, password }) => async dispatch => {
   dispatch({ type: AUTH_REQUEST })
   try {
     const res = await firebase
@@ -53,20 +50,18 @@ export const signin = ({ email, password }) => async dispatch => {
 
     let user
     if (res.user.uid) {
-      dispatch(getCartItems(res.user.uid))
-      dispatch(getWishlistItems(res.user.uid))
+      // dispatch(getCartItems(res.user.uid))
+      // dispatch(getWishlistItems(res.user.uid))
       user = await db.collection('users').doc(res.user.uid).get()
     }
 
     const userData = user.data()
 
     if (userData) {
-      setAlert('Sign in successful', 'success')
       dispatch({ type: AUTH_SUCCESS, payload: userData })
     }
   } catch (err) {
     dispatch({ type: AUTH_FAILURE })
-    setAlert('Wrong Credentials', 'danger')
   }
 }
 
@@ -74,8 +69,8 @@ export const authStateChangeHandler = () => async dispatch => {
   firebase.auth().onAuthStateChanged(async user => {
     if (user) {
       const res = await db.collection('users').doc(user.uid).get()
-      dispatch(getCartItems(user.uid))
-      dispatch(getWishlistItems(user.uid))
+      // dispatch(getCartItems(user.uid))
+      // dispatch(getWishlistItems(user.uid))
 
       const userData = res.data()
 
@@ -83,9 +78,9 @@ export const authStateChangeHandler = () => async dispatch => {
         type: AUTH_SUCCESS,
         payload: userData
       })
-      dispatch(setAppLoading(false))
+      // dispatch(setAppLoading(false))
     } else {
-      dispatch(setAppLoading(false))
+      // dispatch(setAppLoading(false))
     }
   })
 }
@@ -93,7 +88,6 @@ export const authStateChangeHandler = () => async dispatch => {
 export const signOut = () => async dispatch => {
   try {
     await firebase.auth().signOut()
-    setAlert('Sign out successful', 'success')
   } catch (err) {}
   dispatch({ type: LOGOUT })
 }
