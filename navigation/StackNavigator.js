@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import {
   createStackNavigator,
   CardStyleInterpolators
@@ -11,7 +13,7 @@ import NavBar from 'app/components/NavBar'
 
 const Stack = createStackNavigator()
 
-const AppNavigator = ({ isAuthenticated = false }) => {
+const StackNavigator = ({ isAuthenticated }) => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -34,4 +36,12 @@ const AppNavigator = ({ isAuthenticated = false }) => {
   )
 }
 
-export default AppNavigator
+StackNavigator.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired
+}
+
+const mapStateToProps = ({ auth }) => ({
+  isAuthenticated: auth.isAuthenticated
+})
+
+export default connect(mapStateToProps)(StackNavigator)

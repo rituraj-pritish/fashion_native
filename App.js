@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import reduxThunk from 'redux-thunk'
 
 import rootReducer from 'app/redux'
-import AppNavigator from 'app/navigation/AppNavigator'
+import DrawerNavigator from './navigation/DrawerNavigator'
 
 const devTools = __DEV__
   ? composeWithDevTools(applyMiddleware(reduxThunk))
@@ -19,7 +19,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <AppNavigator />
+        <DrawerNavigator />
       </NavigationContainer>
     </Provider>
   )
