@@ -1,3 +1,9 @@
 import Drawer from './Drawer'
+import { connect } from 'react-redux'
+import { signOut } from 'app/redux/auth'
 
-export default Drawer
+const mapStateToProps = ({ auth }) => ({
+  user: auth.user
+})
+
+export default connect(mapStateToProps, { signOut })(Drawer)

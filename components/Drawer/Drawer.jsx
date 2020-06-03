@@ -1,13 +1,27 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer'
-import { View, Text } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
+import { DrawerWrapper, FlexGrow } from './Drawer.styled'
 
-const Drawer = () => {
+const Drawer = ({ navigation, user, signOut }) => {
+  const handleLogout = () => {
+    signOut()
+    navigation.closeDrawer()
+  }
   return (
-    <View>
-      <Text>drawer</Text>
-    </View>
+    <DrawerWrapper>
+      {user && <Text>{user.name}</Text>}
+      <FlexGrow />
+      {user && <DrawerItem label='Logout' onPress={handleLogout} />}
+    </DrawerWrapper>
   )
+}
+
+Drawer.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  user: PropTypes.object,
+  signOut: PropTypes.func.isRequired
 }
 
 export default Drawer

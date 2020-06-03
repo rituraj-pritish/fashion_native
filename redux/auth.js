@@ -7,7 +7,9 @@ import { firebase, db } from 'app/services/firebase'
 
 // types
 
-const LOGOUT = 'LOGOUT'
+const LOGOUT_REQUEST = 'LOGOUT_REQUEST'
+const LOGOUT_FAILURE = 'LOGOUT_FAILURE'
+const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
 
 const AUTH_REQUEST = 'AUTH_REQUEST'
 const AUTH_FAILURE = 'AUTH_FAILURE'
@@ -86,10 +88,13 @@ export const authStateChangeHandler = () => async dispatch => {
 }
 
 export const signOut = () => async dispatch => {
+  dispatch({ type: LOGOUT_REQUEST })
   try {
     await firebase.auth().signOut()
-  } catch (err) {}
-  dispatch({ type: LOGOUT })
+    dispatch({ type: LOGOUT_SUCCESS })
+  } catch (err) {
+    dispatch({ type: LOGOUT_FAILURE })
+  }
 }
 
 //reducer
@@ -115,9 +120,16 @@ export default (state = initialState, { type, payload }) =>
         draft.user = payload
         break
       case AUTH_FAILURE:
+      case LOGOUT_SUCCESS:
         draft.isLoading = false
         draft.isAuthenticated = false
         draft.user = null
+        break
+      case LOGOUT_REQUEST:
+        draft.isLoading = true
+        break
+      case LOGOUT_FAILURE:
+        draft.isLoading = false
         break
     }
   })

@@ -8,5 +8,6 @@ export const NavBarWrapper = styled(View)`
   height: 60px;
   flex-direction: row;
   align-items: center;
-  padding-horizontal: 10;
+  padding-right: 10;
+  padding-left: 20;
 `
