@@ -22,6 +22,13 @@ const SignIn = ({ navigation, signIn }) => {
       <Input value={password} onTextChange={val => setPassword(val)} />
 
       <Button title='Sign In' onPress={handleSubmit} />
+
+      <View>
+        <Text>Don't have an account </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('signup')}>
+          <Text>Sign Up</Text>
+        </TouchableOpacity>
+      </View>
     </Screen>
   )
 }

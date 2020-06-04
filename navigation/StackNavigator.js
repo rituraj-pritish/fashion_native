@@ -11,6 +11,7 @@ import SignUp from 'app/screens/SignUp'
 import Home from 'app/screens/Home'
 import NavBar from 'app/components/NavBar'
 import Spinner from 'react-native-loading-spinner-overlay'
+import Cart from 'app/screens/Cart'
 
 const Stack = createStackNavigator()
 
@@ -28,6 +29,7 @@ const StackNavigator = ({ isAuthenticated, isLoading }) => {
         {isAuthenticated ? (
           <>
             <Stack.Screen name='home' component={Home} />
+            <Stack.Screen name='cart' component={Cart} />
           </>
         ) : (
           <>
