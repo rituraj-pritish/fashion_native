@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Text, StatusBar, Image } from 'react-native'
-import { darken } from 'polished'
+import { Text } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { MaterialIcons } from '@expo/vector-icons'
 
@@ -15,9 +14,6 @@ import {
 import SearchBar from '../SearchBar/SearchBar'
 
 const NavBar = ({ navigation: { navigate, openDrawer } }) => {
-  StatusBar.setBackgroundColor(darken(0.15, theme.colors.lightGrey))
-  StatusBar.setBarStyle('light-content')
-
   return (
     <NavBarWrapper>
       <Ionicons

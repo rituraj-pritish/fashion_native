@@ -1,7 +1,7 @@
 import produce from 'immer'
 
 import { firebase, db } from 'app/services/firebase'
-// import { setAppLoading } from 'redux/app'
+import { setAppLoading } from 'app/redux/app'
 // import { getCartItems } from 'redux/cart'
 // import { getWishlistItems } from 'redux/wishlist'
 
@@ -68,6 +68,7 @@ export const signIn = ({ email, password }) => async dispatch => {
 }
 
 export const authStateChangeHandler = () => async dispatch => {
+  // dispatch(setAppLoading(true))
   firebase.auth().onAuthStateChanged(async user => {
     if (user) {
       const res = await db.collection('users').doc(user.uid).get()
@@ -80,9 +81,10 @@ export const authStateChangeHandler = () => async dispatch => {
         type: AUTH_SUCCESS,
         payload: userData
       })
-      // dispatch(setAppLoading(false))
+      dispatch(setAppLoading(false))
     } else {
-      // dispatch(setAppLoading(false))
+      dispatch({ AUTH_FAILURE })
+      dispatch(setAppLoading(false))
     }
   })
 }
