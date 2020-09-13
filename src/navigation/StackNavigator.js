@@ -1,50 +1,46 @@
-import React, { useEffect } from 'react'
-import { StatusBar } from 'react-native'
-import { darken } from 'polished'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   createStackNavigator,
-  CardStyleInterpolators
-} from '@react-navigation/stack'
+  CardStyleInterpolators,
+} from '@react-navigation/stack';
 
-import theme from 'app/theme'
-import { authStateChangeHandler } from 'app/redux/auth'
-import SignIn from 'app/screens/SignIn'
-import SignUp from 'app/screens/SignUp'
-import Home from 'app/screens/Home'
-import NavBar from 'app/components/NavBar'
-import Spinner from 'react-native-loading-spinner-overlay'
-import Cart from 'app/screens/Cart'
-import LoadingScreen from 'app/screens/LoadingScreen'
+import theme from 'src/theme';
+import { authStateChangeHandler } from 'src/redux/auth';
+import SignIn from 'src/screens/SignIn';
+import SignUp from 'src/screens/SignUp';
+import Home from 'src/screens/Home';
+import AppHeader from 'src/components/AppHeader';
+import Spinner from 'react-native-loading-spinner-overlay';
+import Cart from 'src/screens/Cart';
+import LoadingScreen from 'src/screens/LoadingScreen';
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
 
 const StackNavigator = ({
   isAuthenticated,
   isLoading,
   authStateChangeHandler,
-  appLoading
+  appLoading,
 }) => {
-  StatusBar.setBackgroundColor(darken(0.15, theme.colors.lightGrey))
-  StatusBar.setBarStyle('light-content')
-  
   useEffect(() => {
-    authStateChangeHandler()
-  }, [])
+    authStateChangeHandler();
+  }, []);
 
-  if (appLoading) return <LoadingScreen />
+  // if (appLoading) {
+  //   return <LoadingScreen />;
+  // }
 
   return (
     <>
       <Spinner visible={isLoading} />
       <Stack.Navigator
         screenOptions={{
-          header: props => <NavBar {...props} />,
-          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+          header: (props) => <AppHeader {...props} />,
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}
-        initialRouteName='home'
-      >
+        initialRouteName='home'>
         {isAuthenticated ? (
           <>
             <Stack.Screen name='home' component={Home} />
@@ -58,22 +54,22 @@ const StackNavigator = ({
         )}
       </Stack.Navigator>
     </>
-  )
-}
+  );
+};
 
 StackNavigator.propTypes = {
   authStateChangeHandler: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  appLoading: PropTypes.bool.isRequired
-}
+  appLoading: PropTypes.bool.isRequired,
+};
 
 const mapStateToProps = ({ auth, app }) => ({
   isAuthenticated: auth.isAuthenticated,
   isLoading: auth.isLoading,
-  appLoading: app.isLoading
-})
+  appLoading: app.isLoading,
+});
 
 export default connect(mapStateToProps, { authStateChangeHandler })(
   StackNavigator
-)
+);

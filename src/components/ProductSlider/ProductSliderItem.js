@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Text, Image, View } from 'react-native'
-import { SlideItemWrapper } from './ProductSlider.styled'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Text, Image, View } from 'react-native';
+import { SlideItemWrapper } from './ProductSlider.styled';
 
 const ProductSliderItem = ({ name, id, variants }) => {
-  const variant = Object.keys(variants)[0]
-  const price = variants[variant].price
+  const variant = Object.keys(variants)[0];
+  const price = variants[variant].price;
 
   return (
     <SlideItemWrapper>
@@ -18,13 +18,13 @@ const ProductSliderItem = ({ name, id, variants }) => {
       <Text style={{ marginTop: -28 }}>{name}</Text>
       <Text>{price}</Text>
     </SlideItemWrapper>
-  )
-}
+  );
+};
 
 ProductSliderItem.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  variants: PropTypes.object.isRequired
-}
+  variants: PropTypes.object.isRequired,
+};
 
-export default ProductSliderItem
+export default ProductSliderItem;

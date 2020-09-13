@@ -1,7 +1,14 @@
 {
   "root": true,
-  "extends": "@react-native-community",
+  "extends": ["@react-native-community", "plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["react"],
   "rules": {
-    "object-curly-spacing": ["error", "always"]
+    "object-curly-spacing": ["error", "always"],
+    "jsx-quotes": [2, "prefer-single"]
   }
 }

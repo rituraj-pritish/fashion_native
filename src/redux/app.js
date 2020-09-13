@@ -1,22 +1,22 @@
-import produce from 'immer'
+import produce from 'immer';
 
-const SET_APP_LOADING = 'SET_APP_LOADING'
+const SET_APP_LOADING = 'SET_APP_LOADING';
 
-export const setAppLoading = state => ({
+export const setAppLoading = (state) => ({
   type: SET_APP_LOADING,
-  payload: state
-})
+  payload: state,
+});
 
 const initialState = {
-  isLoading: true
-}
+  isLoading: true,
+};
 
 export default (state = initialState, { type, payload }) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     //eslint-disable-next-line
     switch(type) {
       case SET_APP_LOADING:
-        draft.isLoading = payload
-        break
+        draft.isLoading = payload;
+        break;
     }
-  })
+  });
