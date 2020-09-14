@@ -1,17 +1,21 @@
-import styled from 'styled-components'
-import { View, Dimensions, FlatList } from 'react-native'
+import { Dimensions } from 'react-native'
 
 const SCREEN_WIDTH = Dimensions.get('screen').width
 const SCREEN_HEIGHT = Dimensions.get('screen').height
 
-export const SlideItemWrapper = styled(View)`
-  width: ${SCREEN_WIDTH / 3};
-  height: 100%;
-  margin-horizontal: 5;
-`
+import { StyleSheet } from 'react-native'
 
-export const Carousel = styled(FlatList)`
-  margin-top: 15;
-  width: ${SCREEN_WIDTH};
-  height: ${SCREEN_HEIGHT / 3};
-`
+const styles = StyleSheet.create({
+  carousel: {
+    marginTop: 15,
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT / 3
+  },
+  slideItemContainer: {
+    width: SCREEN_WIDTH / 3,
+    height: '100%',
+    marginHorizontal: 5,
+  }
+})
+
+export default styles

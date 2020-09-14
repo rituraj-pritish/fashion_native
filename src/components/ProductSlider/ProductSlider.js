@@ -1,21 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View, Text, Dimensions, FlatList } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 import ProductSliderItem from './ProductSliderItem'
-import { Carousel } from './ProductSlider.styled'
-
-const width = Dimensions.get('screen').width
-const height = Dimensions.get('screen').height
+import styles from './ProductSlider.styled'
 
 const ProductSlider = ({ title, data }) => {
   return (
     <View>
       <Text>{title}</Text>
-      <Carousel
+      <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
         data={data}
-        renderItem={({ item }) => <ProductSliderItem {...item} />}
+        renderItem={({ item }) => <ProductSliderItem {...item}
+        style={styles.carousel}
+      />}
       />
     </View>
   )

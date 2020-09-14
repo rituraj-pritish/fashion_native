@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, Image, View } from 'react-native';
-import { SlideItemWrapper } from './ProductSlider.styled';
+import styles from './ProductSlider.styled';
 
 const ProductSliderItem = ({ name, id, variants }) => {
   const variant = Object.keys(variants)[0];
   const price = variants[variant].price;
 
   return (
-    <SlideItemWrapper>
+    <View style={styles.slideItemContainer}>
       <View>
         <Image
           style={{ height: '85%', width: '100%' }}
@@ -17,7 +17,7 @@ const ProductSliderItem = ({ name, id, variants }) => {
       </View>
       <Text style={{ marginTop: -28 }}>{name}</Text>
       <Text>{price}</Text>
-    </SlideItemWrapper>
+    </View>
   );
 };
 

@@ -1,12 +1,15 @@
-import styled from 'styled-components'
-import { View, StatusBar, Dimensions } from 'react-native'
+import { StatusBar, Dimensions, StyleSheet } from 'react-native'
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
-export const DrawerWrapper = styled(View)`
-  margin-top: ${StatusBar.currentHeight};
-  display: flex;
-  height: ${Dimensions.get('screen').height - StatusBar.currentHeight};
-  padding-bottom: 10;
-`
-export const FlexGrow = styled(View)`
-  flex-grow: 1;
-`
+const styles = StyleSheet.create({
+  drawerContainer: {
+    marginTop: getStatusBarHeight(),
+    height: Dimensions.get('screen').height - StatusBar.currentHeight,
+    paddingBottom: 10
+  },
+  flexGrow: {
+    flexGrow: 1
+  }
+})
+
+export default styles

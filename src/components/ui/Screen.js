@@ -1,14 +1,15 @@
 import React from 'react';
-import { View } from 'react-native';
-import styled from 'styled-components';
-
-export const ViewWrapper = styled(View)`
-  padding-horizontal: 8;
-  padding-top: 5;
-`;
+import { StyleSheet, View } from 'react-native';
 
 const Screen = ({ children }) => {
-  return <ViewWrapper>{children}</ViewWrapper>;
+  return <View style={styles.screen}>{children}</View>;
 };
+
+const styles = StyleSheet.create({
+  screen: {
+    paddingHorizontal: 8,
+    paddingTop: 5
+  }
+})
 
 export default Screen;

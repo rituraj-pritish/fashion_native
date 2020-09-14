@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
-import { getStatusBarHeight } from 'react-native-status-bar-height';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
 import {
-  Dimensions,
-  StyleSheet,
   Text,
   TextInput,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
 
-import theme from '../../theme';
-import { darken } from 'polished';
+import SCREENS from 'src/constants/screens'
+import styles from './AppHeader.styled'
 
 const AppHeader = ({ navigation }) => {
   const [showSearchBar, setShowSearchBar] = useState(false);
@@ -49,7 +46,7 @@ const AppHeader = ({ navigation }) => {
                 style={styles.icon}
                 onPress={() => navigation.openDrawer()}
               />
-              <Text>Fashion</Text>
+              <Text onPress={() => navigation.navigate(SCREENS.HOME)} >Fashion</Text>
             </View>
             <View style={styles.container}>
               <MaterialIcon
@@ -62,7 +59,7 @@ const AppHeader = ({ navigation }) => {
               <MaterialIcon
                 name='shopping-cart'
                 size={30}
-                onPress={() => {}}
+                onPress={() => navigation.navigate(SCREENS.CART)}
                 color='#000'
               />
             </View>
@@ -72,47 +69,5 @@ const AppHeader = ({ navigation }) => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  statusBar: {
-    height: getStatusBarHeight(),
-    backgroundColor: darken(0.1, theme.colors.lightGrey),
-  },
-  header: {
-    backgroundColor: theme.colors.lightGrey,
-    flexDirection: 'row',
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: 55,
-  },
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  icon: {
-    marginRight: 15,
-  },
-  searchContainer: {
-    backgroundColor: 'red',
-    flex: 1,
-    height: 100,
-  },
-  searchBar: {
-    width: '100%',
-    backgroundColor: 'white',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    height: '100%',
-    paddingRight: 10,
-    borderRadius: 4,
-  },
-  input: {
-    paddingLeft: 10,
-    width: Dimensions.get('screen').width - 55,
-  },
-});
 
 export default AppHeader;

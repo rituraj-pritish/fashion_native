@@ -15,6 +15,7 @@ import AppHeader from 'src/components/AppHeader';
 import Spinner from 'react-native-loading-spinner-overlay';
 import Cart from 'src/screens/Cart';
 import LoadingScreen from 'src/screens/LoadingScreen';
+import SCREENS from 'src/constants/screens'
 
 const Stack = createStackNavigator();
 
@@ -40,16 +41,16 @@ const StackNavigator = ({
           header: (props) => <AppHeader {...props} />,
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}
-        initialRouteName='home'>
+        initialRouteName={SCREENS.HOME}>
         {isAuthenticated ? (
           <>
-            <Stack.Screen name='home' component={Home} />
-            <Stack.Screen name='cart' component={Cart} />
+            <Stack.Screen name={SCREENS.HOME} component={Home} />
+            <Stack.Screen name={SCREENS.CART} component={Cart} />
           </>
         ) : (
           <>
-            <Stack.Screen name='signin' component={SignIn} />
-            <Stack.Screen name='signup' component={SignUp} />
+            <Stack.Screen name={SCREENS.SIGN_IN} component={SignIn} />
+            <Stack.Screen name={SCREENS.SIGN_UP} component={SignUp} />
           </>
         )}
       </Stack.Navigator>

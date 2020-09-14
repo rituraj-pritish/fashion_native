@@ -1,22 +1,23 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Button, View } from 'react-native';
+import { Button, StyleSheet, View } from 'react-native';
 import theme from 'src/theme';
-
-export const StyledButton = styled(View)`
-  border-radius: 20;
-  background-color: ${theme.colors.primary};
-  color: ${theme.colors.white};
-  overflow: hidden;
-  margin-vertical: 10;
-`;
 
 const CustomButton = ({ title, ...props }) => {
   return (
-    <StyledButton>
+    <View style={styles.button}>
       <Button title={title} {...props} color={theme.colors.primary} />
-    </StyledButton>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    borderRadius: 20,
+    backgroundColor: theme.colors.primary,
+    color: theme.colors.white,
+    overflow: 'hidden',
+    marginVertical: 10
+  }
+})
 
 export default CustomButton;
