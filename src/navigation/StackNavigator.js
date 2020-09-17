@@ -5,15 +5,16 @@ import {
   createStackNavigator,
   CardStyleInterpolators,
 } from '@react-navigation/stack';
+import Spinner from 'react-native-loading-spinner-overlay';
 
-import theme from 'src/theme';
 import { authStateChangeHandler } from 'src/redux/auth';
+import theme from 'src/theme';
 import SignIn from 'src/screens/SignIn';
 import SignUp from 'src/screens/SignUp';
 import Home from 'src/screens/Home';
 import AppHeader from 'src/components/AppHeader';
-import Spinner from 'react-native-loading-spinner-overlay';
 import Cart from 'src/screens/Cart';
+import Product from 'src/screens/Product';
 import LoadingScreen from 'src/screens/LoadingScreen';
 import SCREENS from 'src/constants/screens'
 
@@ -27,11 +28,12 @@ const StackNavigator = ({
 }) => {
   useEffect(() => {
     authStateChangeHandler();
+    console.log('called')
   }, []);
 
-  // if (appLoading) {
-  //   return <LoadingScreen />;
-  // }
+  if (appLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <>
@@ -46,6 +48,7 @@ const StackNavigator = ({
           <>
             <Stack.Screen name={SCREENS.HOME} component={Home} />
             <Stack.Screen name={SCREENS.CART} component={Cart} />
+            <Stack.Screen name={SCREENS.PRODUCT} component={Product} />
           </>
         ) : (
           <>

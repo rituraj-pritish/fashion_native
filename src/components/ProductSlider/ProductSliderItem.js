@@ -1,14 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Text, Image, View } from 'react-native';
+import PropTypes from 'prop-types'
+import { useNavigation } from '@react-navigation/native'
+import { Text, Image, View, TouchableOpacity } from 'react-native';
+
+import SCREENS from 'src/constants/screens'
 import styles from './ProductSlider.styled';
 
 const ProductSliderItem = ({ name, id, variants }) => {
+  const navigation = useNavigation()
   const variant = Object.keys(variants)[0];
   const price = variants[variant].price;
 
+  const handlePress = () => {
+    navigation.navigate(SCREENS.PRODUCT)
+  }
+
   return (
-    <View style={styles.slideItemContainer}>
+    <TouchableOpacity style={styles.slideItemContainer} onPress={handlePress} >
       <View>
         <Image
           style={{ height: '85%', width: '100%' }}
@@ -17,7 +25,7 @@ const ProductSliderItem = ({ name, id, variants }) => {
       </View>
       <Text style={{ marginTop: -28 }}>{name}</Text>
       <Text>{price}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

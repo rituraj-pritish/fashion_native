@@ -6,14 +6,13 @@ import styles from './ProductSlider.styled'
 
 const ProductSlider = ({ title, data }) => {
   return (
-    <View>
+    <View style={styles.carousel}>
       <Text>{title}</Text>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
         data={data}
         renderItem={({ item }) => <ProductSliderItem {...item}
-        style={styles.carousel}
       />}
       />
     </View>

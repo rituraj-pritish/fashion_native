@@ -1,14 +1,19 @@
-import { StatusBar, Dimensions, StyleSheet } from 'react-native'
+import { darken } from 'polished'
+import { StyleSheet } from 'react-native'
 import { getStatusBarHeight } from 'react-native-status-bar-height';
+import theme from '../../theme'
 
 const styles = StyleSheet.create({
+  statusBar: {
+    height: getStatusBarHeight(),
+    backgroundColor: darken(0.1, theme.colors.lightGrey)
+  },
   drawerContainer: {
-    marginTop: getStatusBarHeight(),
-    height: Dimensions.get('screen').height - StatusBar.currentHeight,
+    height: '100%',
     paddingBottom: 10
   },
   flexGrow: {
-    flexGrow: 1
+    flexGrow: 1,
   }
 })
 

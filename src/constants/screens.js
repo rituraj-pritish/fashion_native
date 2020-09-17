@@ -3,7 +3,8 @@ const SCREENS = {
   CART: 'CART',
   SIGN_IN: 'SIGN_IN',
   SIGN_UP: 'SIGN_UP',
-  STACK: 'STACK'
+  STACK: 'STACK',
+  PRODUCT: 'PRODUCT'
 }
 
 export default SCREENS

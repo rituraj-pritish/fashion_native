@@ -83,7 +83,7 @@ export const authStateChangeHandler = () => async (dispatch) => {
       });
       dispatch(setAppLoading(false));
     } else {
-      dispatch({ AUTH_FAILURE });
+      dispatch({ type: AUTH_FAILURE });
       dispatch(setAppLoading(false));
     }
   });
@@ -104,7 +104,7 @@ export const signOut = () => async (dispatch) => {
 const initialState = {
   user: null,
   isLoading: false,
-  isAuthenticated: true,
+  isAuthenticated: false,
 };
 
 export default (state = initialState, { type, payload }) =>

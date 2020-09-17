@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { DrawerItem } from '@react-navigation/drawer';
+import { Text, View } from 'react-native';
 
 import styles from './Drawer.styled'
 
@@ -12,6 +12,7 @@ const Drawer = ({ navigation, user, signOut }) => {
   };
   return (
     <View style={styles.drawerContainer}>
+      <View style={styles.statusBar}/>
       {user && <Text>{user.name}</Text>}
       <View style={styles.flexGrow} />
       {user && <DrawerItem label='Logout' onPress={handleLogout} />}

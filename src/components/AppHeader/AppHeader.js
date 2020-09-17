@@ -1,24 +1,25 @@
-import React, { useState } from 'react';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5'
 import {
   Text,
   TextInput,
   TouchableWithoutFeedback,
   View,
-} from 'react-native';
+} from 'react-native'
 
 import SCREENS from 'src/constants/screens'
 import styles from './AppHeader.styled'
 
 const AppHeader = ({ navigation }) => {
-  const [showSearchBar, setShowSearchBar] = useState(false);
-  const [text, setText] = useState('');
+  const [showSearchBar, setShowSearchBar] = useState(false)
+  const [text, setText] = useState('')
 
   const onCancel = () => {
-    setShowSearchBar(false);
-    setText('');
-  };
+    setShowSearchBar(false)
+    setText('')
+  }
 
   return (
     <>
@@ -67,7 +68,14 @@ const AppHeader = ({ navigation }) => {
         )}
       </View>
     </>
-  );
-};
+  )
+}
 
-export default AppHeader;
+AppHeader.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+    openDrawer: PropTypes.func.isRequired,
+  })
+}
+
+export default AppHeader

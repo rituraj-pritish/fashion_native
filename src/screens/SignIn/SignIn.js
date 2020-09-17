@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 
 import Input from 'src/components/ui/Input';
 import Screen from 'src/components/ui/Screen';
 import Button from 'src/components/ui/Button';
+import SCREENS from 'src/constants/screens'
 
 const SignIn = ({ navigation, signIn }) => {
   const [email, setEmail] = useState('demo@demo.com');
@@ -25,7 +26,7 @@ const SignIn = ({ navigation, signIn }) => {
 
       <View>
         <Text>Don't have an account </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('signup')}>
+        <TouchableOpacity onPress={() => navigation.navigate(SCREENS.SIGN_UP)}>
           <Text>Sign Up</Text>
         </TouchableOpacity>
       </View>

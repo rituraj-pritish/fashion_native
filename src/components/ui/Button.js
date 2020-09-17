@@ -5,7 +5,7 @@ import theme from 'src/theme';
 const CustomButton = ({ title, ...props }) => {
   return (
     <View style={styles.button}>
-      <Button title={title} {...props} color={theme.colors.primary} />
+      <Button title={title} {...props} color={theme.colors.white} />
     </View>
   );
 };
