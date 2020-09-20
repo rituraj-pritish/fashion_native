@@ -12,10 +12,10 @@ import {
 import SCREENS from 'src/constants/screens'
 import styles from './AppHeader.styled'
 
-const AppHeader = ({ navigation }) => {
+const AppHeader = ({ navigation, totalItems }) => {
   const [showSearchBar, setShowSearchBar] = useState(false)
   const [text, setText] = useState('')
-
+  console.log('totalItems', totalItems)
   const onCancel = () => {
     setShowSearchBar(false)
     setText('')
@@ -57,12 +57,17 @@ const AppHeader = ({ navigation }) => {
                 color='black'
                 onPress={() => setShowSearchBar(true)}
               />
-              <MaterialIcon
-                name='shopping-cart'
-                size={30}
-                onPress={() => navigation.navigate(SCREENS.CART)}
-                color='#000'
-              />
+              <View>
+                <MaterialIcon
+                  name='shopping-cart'
+                  size={30}
+                  onPress={() => navigation.navigate(SCREENS.CART)}
+                  color='#000'
+                />
+                <View style={styles.cartBadge}>
+                  <Text style={styles.badgeText}>{totalItems}</Text>
+                </View>
+              </View>
             </View>
           </>
         )}
@@ -75,7 +80,8 @@ AppHeader.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
     openDrawer: PropTypes.func.isRequired,
-  })
+  }),
+  totalItems: PropTypes.number.isRequired
 }
 
 export default AppHeader

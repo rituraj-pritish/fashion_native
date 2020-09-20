@@ -9,7 +9,14 @@ const ProductOverview = ({ product, variant, setVariant }) => {
   const { price, images, stock } = variants[variant]
 
   const renderImages = images.map((url,idx) =>
-      <Image key={idx} style={styles.image} source={{ uri: url }}/>
+      <Image
+        key={idx}
+        style={styles.image}
+        source={{ uri: url }}
+        // TODO show spinner
+        onLoadStart={() => console.log('start')}
+        onLoadEnd={() => console.log('end')}
+      />
     )
 
   const productVariants = Object.values(variants).map(({ id, color }) => (

@@ -1,11 +1,13 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
+import Screen from 'src/components/ui/Screen'
+
 const Cart = () => {
   return (
-    <View>
+    <Screen>
       <Text>CArt</Text>
-    </View>
+    </Screen>
   )
 }
 

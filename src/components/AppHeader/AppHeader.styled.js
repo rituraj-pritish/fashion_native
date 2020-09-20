@@ -46,6 +46,21 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     width: Dimensions.get('screen').width - 55,
   },
+  cartBadge: {
+    position: 'absolute',
+    right: -5,
+    top: -8,
+    backgroundColor: theme.colors.primary,
+    width: 20,
+    height: 20,
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  badgeText: {
+    marginLeft: 1,
+    color: theme.colors.white
+  }
 });
 
 export default styles

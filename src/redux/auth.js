@@ -2,7 +2,7 @@ import produce from 'immer';
 
 import { firebase, db } from 'src/services/firebase';
 import { setAppLoading } from 'src/redux/app';
-// import { getCartItems } from 'redux/cart'
+import { getCartItems } from 'src/redux/cart'
 // import { getWishlistItems } from 'redux/wishlist'
 
 // types
@@ -52,7 +52,7 @@ export const signIn = ({ email, password }) => async (dispatch) => {
 
     let user;
     if (res.user.uid) {
-      // dispatch(getCartItems(res.user.uid))
+      dispatch(getCartItems(res.user.uid))
       // dispatch(getWishlistItems(res.user.uid))
       user = await db.collection('users').doc(res.user.uid).get();
     }
@@ -72,7 +72,7 @@ export const authStateChangeHandler = () => async (dispatch) => {
   firebase.auth().onAuthStateChanged(async (user) => {
     if (user) {
       const res = await db.collection('users').doc(user.uid).get();
-      // dispatch(getCartItems(user.uid))
+      dispatch(getCartItems(user.uid))
       // dispatch(getWishlistItems(user.uid))
 
       const userData = res.data();
