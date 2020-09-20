@@ -15,6 +15,10 @@ const styles = StyleSheet.create({
     width: SCREEN_WIDTH / 3,
     height: '100%',
     marginHorizontal: 5,
+  },
+  title: {
+    marginBottom: 10,
+    fontSize: 18
   }
 })
 

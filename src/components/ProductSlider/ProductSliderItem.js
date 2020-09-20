@@ -12,15 +12,19 @@ const ProductSliderItem = ({ name, id, variants }) => {
   const price = variants[variant].price;
 
   const handlePress = () => {
-    navigation.navigate(SCREENS.PRODUCT)
+    navigation.navigate(SCREENS.PRODUCT, {
+      productId: id
+    })
   }
+
+  const imageUrl = variants[variant].images[0]
 
   return (
     <TouchableOpacity style={styles.slideItemContainer} onPress={handlePress} >
       <View>
         <Image
           style={{ height: '85%', width: '100%' }}
-          source={{ uri: variants[variant].images[0] }}
+          source={{ uri: imageUrl }}
         />
       </View>
       <Text style={{ marginTop: -28 }}>{name}</Text>

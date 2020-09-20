@@ -7,7 +7,7 @@ import styles from './ProductSlider.styled'
 const ProductSlider = ({ title, data }) => {
   return (
     <View style={styles.carousel}>
-      <Text>{title}</Text>
+      <Text style={styles.title}>{title}</Text>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
