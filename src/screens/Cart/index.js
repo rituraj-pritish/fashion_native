@@ -1,3 +1,10 @@
+import { connect } from 'react-redux'
 import Cart from './Cart'
 
-export default Cart
+const mapStateToProps = ({ cart }) => {
+  return {
+    products: cart.items
+  }
+}
+
+export default connect(mapStateToProps)(Cart)

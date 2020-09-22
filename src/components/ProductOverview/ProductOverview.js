@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 
 import styles from './ProductOverview.styled.js'
+
+const SCREEN_WIDTH = Dimensions.get('screen').width
 
 const ProductOverview = ({ product, variant, setVariant }) => {
   const { name, variants, brand } = product
