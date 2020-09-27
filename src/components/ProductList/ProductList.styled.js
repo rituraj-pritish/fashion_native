@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
 
+import theme from 'src/theme'
+
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
@@ -9,7 +11,8 @@ const styles = StyleSheet.create({
   image: {
     width: 90,
     height: '100%',
-    marginRight: 10
+    marginRight: 10,
+    borderRadius: theme.borderRadius
   },
   details: {
 

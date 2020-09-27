@@ -24,7 +24,7 @@ const Counter = ({ onIncrement, onDecrement, initialCount = 0 }) => {
       <TouchableOpacity
         style={styles.box}
         onPress={() => {
-          if (count === 0) return
+          if (count === 1) return
           setCount(count - 1)
           onDecrement()
         }}

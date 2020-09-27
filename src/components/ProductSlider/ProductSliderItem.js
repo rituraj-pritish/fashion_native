@@ -24,11 +24,11 @@ const ProductSliderItem = ({ name, id, variants }) => {
     <TouchableOpacity style={styles.slideItemContainer} onPress={handlePress} >
       <View>
         <Image
-          style={{ height: '85%', width: '100%' }}
+          style={styles.image}
           source={{ uri: imageUrl }}
         />
       </View>
-      <Text style={{ marginTop: -28 }}>{name}</Text>
+      <Text style={styles.name}>{name}</Text>
       <Text>{price}</Text>
     </TouchableOpacity>
   );

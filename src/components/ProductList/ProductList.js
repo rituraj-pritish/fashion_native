@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Image, Text, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 
@@ -8,6 +8,7 @@ import SCREENS from 'src/constants/screens'
 import { updateCart, removeFromCart } from 'src/redux/cart'
 import styles from './ProductList.styled.js'
 import Counter from '../Counter/index.js'
+import Image from 'src/components/ui/Image'
 
 const ProductList = ({ products }) => {
   const dispatch = useDispatch()
@@ -19,7 +20,11 @@ const ProductList = ({ products }) => {
         productId,
         variantId
       })}>
-        <Image source={{ uri: imageUrl }} style={styles.image}/>
+        <Image
+          source={{ uri: imageUrl }}
+          style={styles.image}
+          hasSmallSpinner
+        />
       </TouchableOpacity>
       <View style={styles.details}>
         <Text style={styles.name}>{name}</Text>

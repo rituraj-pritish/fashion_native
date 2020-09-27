@@ -11,4 +11,6 @@ export default {
     green: '#5ac12a',
     golden: '#FFD700',
   },
+
+  borderRadius: 4
 };

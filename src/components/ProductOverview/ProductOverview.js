@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 
+import Image from 'src/components/ui/Image'
 import styles from './ProductOverview.styled.js'
-
-const SCREEN_WIDTH = Dimensions.get('screen').width
 
 const ProductOverview = ({ product, variant, setVariant }) => {
   const { name, variants, brand } = product
@@ -15,9 +14,6 @@ const ProductOverview = ({ product, variant, setVariant }) => {
         key={idx}
         style={styles.image}
         source={{ uri: url }}
-        // TODO show spinner
-        onLoadStart={() => console.log('start')}
-        onLoadEnd={() => console.log('end')}
       />
     )
 
