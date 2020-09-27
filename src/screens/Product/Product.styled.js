@@ -1,4 +1,7 @@
+import { lighten } from 'polished'
 import { StyleSheet } from 'react-native'
+
+import theme from 'src/theme'
 
 const styles = StyleSheet.create({
   bottomButtons: {
@@ -10,11 +13,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '50%',
-    fontSize: 18
+    fontSize: 18,
+    backgroundColor: lighten(0.4, theme.colors.grey)
   },
   buttonText: {
     fontSize: 18,
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    color: theme.colors.white
   }
 })
 

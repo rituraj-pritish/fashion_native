@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { View, Text, Image, Pressable, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 
 import { addToCart } from 'src/redux/cart'
 import Screen from 'src/components/ui/Screen'
@@ -11,6 +11,8 @@ import styles from './Product.styled.js'
 const Product = ({ product, dispatch, variantInCart, variantId }) => {
   const { id, name, variants } = product
   const [variant, setVariant] = useState(variantId)
+
+  useEffect(() => {}, [variantId, product.id])
 
   const handleAddToCart = () => {
     // todo disable add to cart button
@@ -47,7 +49,7 @@ const Product = ({ product, dispatch, variantInCart, variantId }) => {
       <TouchableOpacity
         style={[styles.button, { backgroundColor: theme.colors.primary }]}
         onPress={handleBuyNow}>
-        <Text style={[styles.buttonText, { color: theme.colors.white }]}>Buy now</Text>
+        <Text style={styles.buttonText}>Buy now</Text>
       </TouchableOpacity>
     </View>
     </>

@@ -14,6 +14,17 @@ const styles = StyleSheet.create({
   },
   flexGrow: {
     flexGrow: 1,
+  },
+  topSection: {
+    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  user: {
+    fontSize: 18
+  },
+  userIcon: {
+    marginRight: 10
   }
 })
 
