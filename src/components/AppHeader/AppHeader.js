@@ -15,7 +15,7 @@ import styles from './AppHeader.styled'
 const AppHeader = ({ navigation, totalItems }) => {
   const [showSearchBar, setShowSearchBar] = useState(false)
   const [text, setText] = useState('')
-  console.log('totalItems', totalItems)
+
   const onCancel = () => {
     setShowSearchBar(false)
     setText('')

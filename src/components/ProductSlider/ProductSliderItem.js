@@ -13,7 +13,8 @@ const ProductSliderItem = ({ name, id, variants }) => {
 
   const handlePress = () => {
     navigation.navigate(SCREENS.PRODUCT, {
-      productId: id
+      productId: id,
+      variantId: variant
     })
   }
 

@@ -19,6 +19,12 @@ const styles = StyleSheet.create({
   },
   price: {
     marginTop: 10
+  },
+  buttons: {
+    flexDirection: 'row'
+  },
+  button: {
+    marginRight: 10
   }
 })
 

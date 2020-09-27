@@ -8,9 +8,9 @@ import ProductOverview from 'src/components/ProductOverview'
 import theme from 'src/theme'
 import styles from './Product.styled.js'
 
-const Product = ({ product, dispatch, variantInCart }) => {
+const Product = ({ product, dispatch, variantInCart, variantId }) => {
   const { id, name, variants } = product
-  const [variant, setVariant] = useState(Object.keys(variants)[0])
+  const [variant, setVariant] = useState(variantId)
 
   const handleAddToCart = () => {
     // todo disable add to cart button
@@ -64,7 +64,8 @@ Product.propTypes = {
     variants: PropTypes.object.isRequired,
   }).isRequired,
   dispatch: PropTypes.func.isRequired,
-  variantInCart: PropTypes.string.isRequired
+  variantInCart: PropTypes.string.isRequired,
+  variantId: PropTypes.string.isRequired
 }
 
 export default Product
